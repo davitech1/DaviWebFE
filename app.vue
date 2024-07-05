@@ -1,8 +1,8 @@
-<script setup lang="ts">
+<script setup>
 </script>
 
 <template>
-  <div>
-    <NuxtPage />
-  </div>
+    <NuxtLayout data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+      <NuxtPage/>
+    </NuxtLayout>
 </template>

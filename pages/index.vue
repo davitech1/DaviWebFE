@@ -1,35 +1,51 @@
-<template> 
-  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
+<script setup >
+  import { ref, onMounted } from 'vue'
+
+const workItems = ref([
+  { left: 0, top: 0 },
+  { left: 637, top: 0 },
+  { left: 1275, top: 0 },
+  { left: 0, top: 388 },
+  { left: 637, top: 388 },
+  { left: 1275, top: 388 }
+])
+
+const gridHeight = ref(0)
+
+onMounted(() => {
+  calculateLayout()
+  window.addEventListener('resize', calculateLayout)
+})
+
+function calculateLayout() {
+  const itemWidth = 637
+  const itemHeight = 388
+  workItems.value = workItems.value.map((item, index) => ({
+    left: (index % 3) * itemWidth,
+    top: Math.floor(index / 3) * itemHeight
+  }))
+  gridHeight.value = Math.ceil(workItems.value.length / 3) * itemHeight
+}
+
+</script>
+
+<template>
     <main>
-      <nav class="navbar navbar-custom navbar-transparent navbar-fixed-top one-page" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">Davitech</a>
-          </div>
-          <div class="collapse navbar-collapse" id="custom-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#totop">Home</a></li>
-              <li><a class="section-scroll" href="#services">Services</a></li>
-              <li><a class="section-scroll" href="#works">Works</a></li>
-              <li><a class="section-scroll" href="#alt-features">Features</a></li>
-              <li><a class="section-scroll" href="#team">Team</a></li>
-              <li><a class="section-scroll" href="#pricing">Prices</a></li>
-              <li><a class="section-scroll" href="#news">News</a></li>
-              <li><a class="section-scroll" href="#contact">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <section class="home-section home-full-height bg-dark bg-gradient" id="home" data-background="/images/ngon-nui-thieng-cua-nhat-ban.jpg">
+      <!-- <PageLoader /> -->
+      <AppHeaderDefault />
+      <section id="home" class="home-section home-full-height bg-dark bg-gradient  fixed-height-section" :style="{backgroundImage:'url(/images/section-10.jpg)'}" >
         <div class="titan-caption">
           <div class="caption-content">
             <div class="font-alt mb-30 titan-title-size-1">Hello &amp; welcome</div>
-            <div class="font-alt mb-40 titan-title-size-4">We are Titan</div><a class="section-scroll btn btn-border-w btn-round" href="#">Learn More</a>
+            <div class="font-alt mb-40 titan-title-size-4">I am Trunggg</div>
+            <a class="section-scroll btn btn-border-w btn-round" href="#">Learn More</a>
+            
           </div>
         </div>
       </section>
       <div class="main">
-        <section class="module" id="services">
+        <section id="services" class="module">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
@@ -40,56 +56,56 @@
             <div class="row multi-columns-row">
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="features-item">
-                  <div class="features-icon"><span class="icon-lightbulb"></span></div>
+                  <div class="features-icon"><span class="icon-lightbulb"/></div>
                   <h3 class="features-title font-alt">Ideas and concepts</h3>
                   <p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="features-item">
-                  <div class="features-icon"><span class="icon-bike"></span></div>
+                  <div class="features-icon"><span class="icon-bike"/></div>
                   <h3 class="features-title font-alt">Optimised for speed</h3>
                   <p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="features-item">
-                  <div class="features-icon"><span class="icon-tools"></span></div>
+                  <div class="features-icon"><span class="icon-tools"/></div>
                   <h3 class="features-title font-alt">Designs &amp; interfaces</h3>
                   <p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="features-item">
-                  <div class="features-icon"><span class="icon-gears"></span></div>
+                  <div class="features-icon"><span class="icon-gears"/></div>
                   <h3 class="features-title font-alt">Highly customizable</h3>
                   <p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="features-item">
-                  <div class="features-icon"><span class="icon-tools-2"></span></div>
+                  <div class="features-icon"><span class="icon-tools-2"/></div>
                   <h3 class="features-title font-alt">Coding &amp; development</h3>
                   <p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="features-item">
-                  <div class="features-icon"><span class="icon-genius"></span></div>
+                  <div class="features-icon"><span class="icon-genius"/></div>
                   <h3 class="features-title font-alt">Features &amp; plugins</h3>
                   <p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="features-item">
-                  <div class="features-icon"><span class="icon-mobile"></span></div>
+                  <div class="features-icon"><span class="icon-mobile"/></div>
                   <h3 class="features-title font-alt">Responsive design</h3>
                   <p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="features-item">
-                  <div class="features-icon"><span class="icon-lifesaver"></span></div>
+                  <div class="features-icon"><span class="icon-lifesaver"/></div>
                   <h3 class="features-title font-alt">Dedicated support</h3>
                   <p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
                 </div>
@@ -97,12 +113,12 @@
             </div>
           </div>
         </section>
-        <section class="module bg-dark-60" data-background="/images/section-6.jpg">
+        <section class="module bg-dark-60" :style="{backgroundImage: 'url(/images/section-6.jpg)'}">
           <div class="container">
             <div class="row">
               <div class="col-sm-12">
                 <div class="video-box">
-                  <div class="video-box-icon"><a class="video-pop-up" href="https://www.youtube.com/watch?v=TTxZj3DZiIM"><span class="icon-video"></span></a></div>
+                  <div class="video-box-icon"><a class="video-pop-up" href="https://www.youtube.com/watch?v=TTxZj3DZiIM"><span class="icon-video"/></a></div>
                   <div class="video-title font-alt">Presentation</div>
                   <div class="video-subtitle font-alt">Watch the video about our new products</div>
                 </div>
@@ -110,19 +126,19 @@
             </div>
           </div>
         </section>
-        <section class="module pb-0" id="works">
+        <section id="works" class="module pb-0">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
                 <h2 class="module-title font-alt">Our Works</h2>
-                <div class="module-subtitle font-serif"></div>
+                <div class="module-subtitle font-serif"/>
               </div>
             </div>
           </div>
           <div class="container">
             <div class="row">
               <div class="col-sm-12">
-                <ul class="filter font-alt" id="filters">
+                <ul id="filters" class="filter font-alt">
                   <li><a class="current wow fadeInUp" href="#" data-filter="*">All</a></li>
                   <li><a class="wow fadeInUp" href="#" data-filter=".illustration" data-wow-delay="0.2s">Illustration</a></li>
                   <li><a class="wow fadeInUp" href="#" data-filter=".marketing" data-wow-delay="0.4s">Marketing</a></li>
@@ -132,39 +148,40 @@
               </div>
             </div>
           </div>
-          <ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid">
+            <ul id="works-grid" class="works-grid works-grid-gut works-grid-3 works-hover-w" :style="{ position: 'relative', height: `${gridHeight}px` }">
+            
             <li class="work-item illustration webdesign"><a href="portfolio-single-1.html">
-                <div class="work-image"><NuxtImg src="/images/work-1.jpg" alt="Portfolio Item"/></div>
+                <div class="work-image"><img src="~/assets/images/work-1.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Corporate Identity</h3>
                   <div class="work-descr">Illustration</div>
                 </div></a></li>
             <li class="work-item marketing photography"><a href="portfolio-single-1.html">
-                <div class="work-image"><img src="/images/work-2.jpg" alt="Portfolio Item"/></div>
+                <div class="work-image"><img src="~/assets/images/work-2.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Bag MockUp</h3>
                   <div class="work-descr">Marketing</div>
                 </div></a></li>
             <li class="work-item illustration photography"><a href="portfolio-single-1.html">
-                <div class="work-image"><img src="~/assets/images/work-3.jpg" alt="Portfolio Item"/></div>
+                <div class="work-image"><img src="~/assets/images/work-3.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Disk Cover</h3>
                   <div class="work-descr">Illustration</div>
                 </div></a></li>
             <li class="work-item marketing photography"><a href="portfolio-single-1.html">
-                <div class="work-image"><img src="~/assets/images/work-4.jpg" alt="Portfolio Item"/></div>
+                <div class="work-image"><img src="~/assets/images/work-4.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Business Card</h3>
                   <div class="work-descr">Photography</div>
                 </div></a></li>
             <li class="work-item illustration webdesign"><a href="portfolio-single-1.html">
-                <div class="work-image"><img src="~/assets/images/work-5.jpg" alt="Portfolio Item"/></div>
+                <div class="work-image"><img src="~/assets/images/work-5.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Business Card</h3>
                   <div class="work-descr">Webdesign</div>
                 </div></a></li>
             <li class="work-item marketing webdesign"><a href="portfolio-single-1.html">
-                <div class="work-image"><img src="~/assets/images/work-6.jpg" alt="Portfolio Item"/></div>
+                <div class="work-image"><img src="~/assets/images/work-6.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Business Cards in paper clip</h3>
                   <div class="work-descr">Marketing</div>
@@ -186,7 +203,7 @@
             </div>
           </div>
         </section>
-        <section class="module" id="alt-features">
+        <section id="alt-features" class="module">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
@@ -197,19 +214,19 @@
             <div class="row">
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="alt-features-item">
-                  <div class="alt-features-icon"><span class="icon-strategy"></span></div>
+                  <div class="alt-features-icon"><span class="icon-strategy"/></div>
                   <h3 class="alt-features-title font-alt">Branding</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
                 </div>
                 <div class="alt-features-item">
-                  <div class="alt-features-icon"><span class="icon-tools-2"></span></div>
+                  <div class="alt-features-icon"><span class="icon-tools-2"/></div>
                   <h3 class="alt-features-title font-alt">Development</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
                 </div>
                 <div class="alt-features-item">
-                  <div class="alt-features-icon"><span class="icon-target"></span></div>
+                  <div class="alt-features-icon"><span class="icon-target"/></div>
                   <h3 class="alt-features-title font-alt">Marketing</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
                 </div>
                 <div class="alt-features-item">
-                  <div class="alt-features-icon"><span class="icon-tools"></span></div>
+                  <div class="alt-features-icon"><span class="icon-tools"/></div>
                   <h3 class="alt-features-title font-alt">Design</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
                 </div>
               </div>
@@ -218,19 +235,19 @@
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="alt-features-item">
-                  <div class="alt-features-icon"><span class="icon-camera"></span></div>
+                  <div class="alt-features-icon"><span class="icon-camera"/></div>
                   <h3 class="alt-features-title font-alt">Photography</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
                 </div>
                 <div class="alt-features-item">
-                  <div class="alt-features-icon"><span class="icon-mobile"></span></div>
+                  <div class="alt-features-icon"><span class="icon-mobile"/></div>
                   <h3 class="alt-features-title font-alt">Mobile</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
                 </div>
                 <div class="alt-features-item">
-                  <div class="alt-features-icon"><span class="icon-linegraph"></span></div>
+                  <div class="alt-features-icon"><span class="icon-linegraph"/></div>
                   <h3 class="alt-features-title font-alt">Music</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
                 </div>
                 <div class="alt-features-item">
-                  <div class="alt-features-icon"><span class="icon-basket"></span></div>
+                  <div class="alt-features-icon"><span class="icon-basket"/></div>
                   <h3 class="alt-features-title font-alt">Shop</h3>A wonderful serenity has taken possession of my entire soul like these sweet mornings.
                 </div>
               </div>
@@ -238,7 +255,7 @@
           </div>
         </section>
         <hr class="divider-w">
-        <section class="module" id="team">
+        <section id="team" class="module">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
@@ -249,11 +266,11 @@
             <div class="row">
               <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
                 <div class="team-item">
-                  <div class="team-image"><img src="~/assets/images/team-1.jpg" alt="Member Photo"/>
+                  <div class="team-image"><img src="~/assets/images/team-1.jpg" alt="Member Photo">
                     <div class="team-detail">
                       <h5 class="font-alt">Hi all</h5>
                       <p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
-                      <div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
+                      <div class="team-social"><a href="#"><i class="fa fa-facebook"/></a><a href="#"><i class="fa fa-twitter"/></a><a href="#"><i class="fa fa-dribbble"/></a><a href="#"><i class="fa fa-skype"/></a></div>
                     </div>
                   </div>
                   <div class="team-descr font-alt">
@@ -264,11 +281,11 @@
               </div>
               <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
                 <div class="team-item">
-                  <div class="team-image"><img src="~/assets/images/team-2.jpg" alt="Member Photo"/>
+                  <div class="team-image"><img src="~/assets/images/team-2.jpg" alt="Member Photo">
                     <div class="team-detail">
                       <h5 class="font-alt">Good day</h5>
                       <p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
-                      <div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
+                      <div class="team-social"><a href="#"><i class="fa fa-facebook"/></a><a href="#"><i class="fa fa-twitter"/></a><a href="#"><i class="fa fa-dribbble"/></a><a href="#"><i class="fa fa-skype"/></a></div>
                     </div>
                   </div>
                   <div class="team-descr font-alt">
@@ -279,11 +296,11 @@
               </div>
               <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
                 <div class="team-item">
-                  <div class="team-image"><img src="~/assets/images/team-3.jpg" alt="Member Photo"/>
+                  <div class="team-image"><img src="~/assets/images/team-3.jpg" alt="Member Photo">
                     <div class="team-detail">
                       <h5 class="font-alt">Hello</h5>
                       <p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
-                      <div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
+                      <div class="team-social"><a href="#"><i class="fa fa-facebook"/></a><a href="#"><i class="fa fa-twitter"/></a><a href="#"><i class="fa fa-dribbble"/></a><a href="#"><i class="fa fa-skype"/></a></div>
                     </div>
                   </div>
                   <div class="team-descr font-alt">
@@ -294,11 +311,11 @@
               </div>
               <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
                 <div class="team-item">
-                  <div class="team-image"><img src="~/assets/images/team-4.jpg" alt="Member Photo"/>
+                  <div class="team-image"><img src="~/assets/images/team-4.jpg" alt="Member Photo">
                     <div class="team-detail">
                       <h5 class="font-alt">Yes, it's me</h5>
                       <p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
-                      <div class="team-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a></div>
+                      <div class="team-social"><a href="#"><i class="fa fa-facebook"/></a><a href="#"><i class="fa fa-twitter"/></a><a href="#"><i class="fa fa-dribbble"/></a><a href="#"><i class="fa fa-skype"/></a></div>
                     </div>
                   </div>
                   <div class="team-descr font-alt">
@@ -310,47 +327,47 @@
             </div>
           </div>
         </section>
-        <section class="module bg-dark-60" data-background="/images/section-3.jpg">
+        <section class="module bg-dark-60" :style="{backgroundImage: 'url(/images/section-3.jpg)'}" >
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
                 <h2 class="module-title font-alt">Scoreboard</h2>
-                <div class="module-subtitle font-serif"></div>
+                <div class="module-subtitle font-serif"/>
               </div>
             </div>
             <div class="row multi-columns-row">
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="count-item mb-sm-40">
-                  <div class="count-icon"><span class="icon-wallet"></span></div>
-                  <h3 class="count-to font-alt" data-countto="6543"></h3>
+                  <div class="count-icon"><span class="icon-wallet"/></div>
+                  <h3 class="count-to font-alt" data-countto="6543"/>
                   <h5 class="count-title font-serif">Dollars raised for charity</h5>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="count-item mb-sm-40">
-                  <div class="count-icon"><span class="icon-wine"></span></div>
-                  <h3 class="count-to font-alt" data-countto="8"></h3>
+                  <div class="count-icon"><span class="icon-wine"/></div>
+                  <h3 class="count-to font-alt" data-countto="8"/>
                   <h5 class="count-title font-serif">Cups of wine consumed</h5>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="count-item mb-sm-40">
-                  <div class="count-icon"><span class="icon-camera"></span></div>
-                  <h3 class="count-to font-alt" data-countto="184"></h3>
+                  <div class="count-icon"><span class="icon-camera"/></div>
+                  <h3 class="count-to font-alt" data-countto="184"/>
                   <h5 class="count-title font-serif">Photographs taken</h5>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="count-item mb-sm-40">
-                  <div class="count-icon"><span class="icon-map-pin"></span></div>
-                  <h3 class="count-to font-alt" data-countto="32"></h3>
+                  <div class="count-icon"><span class="icon-map-pin"/></div>
+                  <h3 class="count-to font-alt" data-countto="32"/>
                   <h5 class="count-title font-serif">Locations covered</h5>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <section class="module" id="pricing">
+        <section id="pricing" class="module">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
@@ -362,7 +379,7 @@
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="price-table font-alt">
                   <h4>Light</h4>
-                  <div class="borderline"></div>
+                  <div class="borderline"/>
                   <p class="price"><span>$</span>9
                   </p>
                   <ul class="price-details">
@@ -377,7 +394,7 @@
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="price-table font-alt">
                   <h4>Basic</h4>
-                  <div class="borderline"></div>
+                  <div class="borderline"/>
                   <p class="price"><span>$</span>29
                   </p>
                   <ul class="price-details">
@@ -393,7 +410,7 @@
                 <div class="price-table font-alt best">
                   <h4>Advanced</h4>
                   <p class="small">Best Choice</p>
-                  <div class="borderline"></div>
+                  <div class="borderline"/>
                   <p class="price"><span>$</span>64
                   </p>
                   <ul class="price-details">
@@ -408,7 +425,7 @@
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="price-table font-alt">
                   <h4>Ultimate</h4>
-                  <div class="borderline"></div>
+                  <div class="borderline"/>
                   <p class="price"><span>$</span>119
                   </p>
                   <ul class="price-details">
@@ -428,14 +445,14 @@
             </div>
           </div>
         </section>
-        <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="/images/testimonial_bg.jpg">
+        <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" :style="{backgroundImage: 'url(/images/testimonial_bg.jpg)'}" >
           <div class="testimonials-slider pt-140 pb-140">
             <ul class="slides">
               <li>
                 <div class="container">
                   <div class="row">
                     <div class="col-sm-12">
-                      <div class="module-icon"><span class="icon-quote"></span></div>
+                      <div class="module-icon"><span class="icon-quote"/></div>
                     </div>
                   </div>
                   <div class="row">
@@ -459,7 +476,7 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-sm-12">
-                      <div class="module-icon"><span class="icon-quote"></span></div>
+                      <div class="module-icon"><span class="icon-quote"/></div>
                     </div>
                   </div>
                   <div class="row">
@@ -483,7 +500,7 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-sm-12">
-                      <div class="module-icon"><span class="icon-quote"></span></div>
+                      <div class="module-icon"><span class="icon-quote"/></div>
                     </div>
                   </div>
                   <div class="row">
@@ -506,7 +523,7 @@
             </ul>
           </div>
         </section>
-        <section class="module" id="news">
+        <section id="news" class="module">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
@@ -517,7 +534,7 @@
             <div class="row multi-columns-row post-columns">
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="post mb-20">
-                  <div class="post-thumbnail"><a href="#"><img src="~/assets/images/post-1.jpg" alt="Blog-post Thumbnail"/></a></div>
+                  <div class="post-thumbnail"><a href="#"><img src="~/assets/images/post-1.jpg" alt="Blog-post Thumbnail"></a></div>
                   <div class="post-header font-alt">
                     <h2 class="post-title"><a href="#">Our trip to the Alps</a></h2>
                     <div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments
@@ -531,7 +548,7 @@
               </div>
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="post mb-20">
-                  <div class="post-thumbnail"><a href="#"><img src="~/assets/images/post-2.jpg" alt="Blog-post Thumbnail"/></a></div>
+                  <div class="post-thumbnail"><a href="#"><img src="~/assets/images/post-2.jpg" alt="Blog-post Thumbnail"></a></div>
                   <div class="post-header font-alt">
                     <h2 class="post-title"><a href="#">Shore after the tide</a></h2>
                     <div class="post-meta">By&nbsp;<a href="#">Andy River</a>&nbsp;| 11 November | 4 Comments
@@ -545,7 +562,7 @@
               </div>
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="post mb-20">
-                  <div class="post-thumbnail"><a href="#"><img src="~/assets/images/post-3.jpg" alt="Blog-post Thumbnail"/></a></div>
+                  <div class="post-thumbnail"><a href="#"><img src="~/assets/images/post-3.jpg" alt="Blog-post Thumbnail"></a></div>
                   <div class="post-header font-alt">
                     <h2 class="post-title"><a href="#">We in New Zealand</a></h2>
                     <div class="post-meta">By&nbsp;<a href="#">Dylan Woods</a>&nbsp;| 5 November | 15 Comments
@@ -573,22 +590,22 @@
                 <div class="callout-btn-box">
                   <form id="subscription-form" role="form" method="post" action="php/subscribe.php">
                     <div class="input-group">
-                      <input class="form-control" type="email" id="semail" name="semail" placeholder="Your Email" data-validation-required-message="Please enter your email address." required="required"/><span class="input-group-btn">
-                        <button class="btn btn-g btn-round" id="subscription-form-submit" type="submit">Submit</button></span>
+                      <input id="semail" class="form-control" type="email" name="semail" placeholder="Your Email" data-validation-required-message="Please enter your email address." required="required"><span class="input-group-btn">
+                        <button id="subscription-form-submit" class="btn btn-g btn-round" type="submit">Submit</button></span>
                     </div>
                   </form>
-                  <div class="text-center" id="subscription-response"></div>
+                  <div id="subscription-response" class="text-center"/>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <section class="module" id="contact">
+        <section id="contact" class="module">
           <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
                 <h2 class="module-title font-alt">Get in touch</h2>
-                <div class="module-subtitle font-serif"></div>
+                <div class="module-subtitle font-serif"/>
               </div>
             </div>
             <div class="row">
@@ -596,29 +613,29 @@
                 <form id="contactForm" role="form" method="post" action="php/contact.php">
                   <div class="form-group">
                     <label class="sr-only" for="name">Name</label>
-                    <input class="form-control" type="text" id="name" name="name" placeholder="Your Name*" required="required" data-validation-required-message="Please enter your name."/>
-                    <p class="help-block text-danger"></p>
+                    <input id="name" class="form-control" type="text" name="name" placeholder="Your Name*" required="required" data-validation-required-message="Please enter your name.">
+                    <p class="help-block text-danger"/>
                   </div>
                   <div class="form-group">
                     <label class="sr-only" for="email">Email</label>
-                    <input class="form-control" type="email" id="email" name="email" placeholder="Your Email*" required="required" data-validation-required-message="Please enter your email address."/>
-                    <p class="help-block text-danger"></p>
+                    <input id="email" class="form-control" type="email" name="email" placeholder="Your Email*" required="required" data-validation-required-message="Please enter your email address.">
+                    <p class="help-block text-danger"/>
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control" rows="7" id="message" name="message" placeholder="Your Message*" required="required" data-validation-required-message="Please enter your message."></textarea>
-                    <p class="help-block text-danger"></p>
+                    <textarea id="message" class="form-control" rows="7" name="message" placeholder="Your Message*" required="required" data-validation-required-message="Please enter your message."/>
+                    <p class="help-block text-danger"/>
                   </div>
                   <div class="text-center">
-                    <button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Submit</button>
+                    <button id="cfsubmit" class="btn btn-block btn-round btn-d" type="submit">Submit</button>
                   </div>
                 </form>
-                <div class="ajax-response font-alt" id="contactFormResponse"></div>
+                <div id="contactFormResponse" class="ajax-response font-alt"/>
               </div>
             </div>
           </div>
         </section>
         <section id="map-section">
-          <div id="map"></div>
+          <div id="map"/>
         </section>
         <div class="module-small bg-dark">
           <div class="container">
@@ -660,14 +677,14 @@
                   <h5 class="widget-title font-alt">Popular Posts</h5>
                   <ul class="widget-posts">
                     <li class="clearfix">
-                      <div class="widget-posts-image"><a href="#"><img src="~/assets/images/rp-1.jpg" alt="Post Thumbnail"/></a></div>
+                      <div class="widget-posts-image"><a href="#"><img src="~/assets/images/rp-1.jpg" alt="Post Thumbnail"></a></div>
                       <div class="widget-posts-body">
                         <div class="widget-posts-title"><a href="#">Designer Desk Essentials</a></div>
                         <div class="widget-posts-meta">23 january</div>
                       </div>
                     </li>
                     <li class="clearfix">
-                      <div class="widget-posts-image"><a href="#"><img src="~/assets/images/rp-2.jpg" alt="Post Thumbnail"/></a></div>
+                      <div class="widget-posts-image"><a href="#"><img src="~/assets/images/rp-2.jpg" alt="Post Thumbnail"></a></div>
                       <div class="widget-posts-body">
                         <div class="widget-posts-title"><a href="#">Realistic Business Card Mockup</a></div>
                         <div class="widget-posts-meta">15 February</div>
@@ -680,32 +697,32 @@
           </div>
         </div>
         <hr class="divider-d">
-        <footer class="footer bg-dark">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-6">
-                <p class="copyright font-alt">&copy; 2017&nbsp;<a href="index.html">TitaN</a>, All Rights Reserved</p>
-              </div>
-              <div class="col-sm-6">
-                <div class="footer-social-links"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <AppFooter />
       </div>
-      <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+      <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"/></a></div>
     </main>
-  </body>
 </template>
 
-<script>
-export default {
-  name: 'IndexPage'
+
+<style>
+.fixed-height-section {
+  height: 100vh; 
+  min-height: 465px; 
+  background-size: cover;
+  background-position: center;
 }
-</script>
 
-<style scoped>
-/* Add your scoped CSS here if needed */
-</style>
+.works-grid {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
 
+.work-item {
+  width: 637px;
+  margin: 0;
+  padding: 0;
+  float: left;
+  overflow: hidden;
+}
+</style>: string | number: string | number: string | number
