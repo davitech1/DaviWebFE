@@ -6,6 +6,9 @@
         <input v-model="name"  class="form-control" type="text" placeholder="Tên" required >
       </div>
       <div class="form-group">
+        <input v-model="email" class="form-control"  type="email" placeholder="Email" required>
+      </div>
+      <div class="form-group">
         <input v-model="password" class="form-control"  type="password" placeholder="Mật khẩu" required>
       </div>
       <div class="form-group">
@@ -24,6 +27,7 @@
   import { useRegister } from '~/composables/useAuth'
   
   const name = ref('')
+  const email = ref('')
   const password = ref('')
   const rePassword = ref('')
   
@@ -34,10 +38,11 @@
       error.value = 'Mật khẩu không khớp'
       return
     }
-    await register(name.value, password.value)
+    await register(name.value,email.value, password.value)
     if (successMessage.value) {
     // Xóa dữ liệu trong form
     name.value = ''
+    email.value = ''
     password.value = ''
     rePassword.value = ''
   }

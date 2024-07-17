@@ -45,5 +45,5 @@ export default defineNuxtConfig({
     public: {
       apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:3055/v1/api/',
     }
-  }
+  },
 })

@@ -10,27 +10,30 @@ export const useLogin = () => {
   const router = useRouter()
   const userStore = useUserStore()
 
-  const login = async (name, password) => {
+  const login = async (email, password) => {
     error.value = ''
     successMessage.value = ''
     isLoading.value = true
 
     try {
-      const { data } = await useFetch('/api/auth/login', {
+      const { data } = await useFetch('http://localhost:3055/v1/api/user/login', {
         method: 'POST',
-        body: { name, password }
+        body: { email, password },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': 'edd46669d67a5eb5691f7634e9faa66242d933c43688be28d1e2dc0eca3e4ab7d76cfc4732603ce28a46e796f648952fc7587e5b6b05169bc97ed9c7607acd43'
+        }
       })
-
-      if (data.value && data.value.code === 200) {
-        const { user, token } = data.value
+      if (data._rawValue && data._rawValue.status === 200) {
+        const { user, tokens } = data._rawValue.metadata
         userStore.setUser(user)
-        userStore.setToken(token)
+        userStore.setToken(tokens)
         
         // Lưu thông tin vào localStorage
         localStorage.setItem('user', JSON.stringify(user))
-        localStorage.setItem('token', token)
+        localStorage.setItem('token', tokens)
         
-        successMessage.value = `Chào mừng ${user.name}! Đăng nhập thành công.`
+        successMessage.value = `Chào mừng ${user.email}! Đăng nhập thành công.`
         
         // Đợi 2 giây trước khi chuyển hướng
         setTimeout(() => {
@@ -72,20 +75,24 @@ export const useRegister = () => {
   const router = useRouter()
   const userStore = useUserStore()
 
-  const register = async (name, password) => {
+  const register = async (name, email, password) => {
     error.value = ''
     isLoading.value = true
     successMessage.value = ''
 
     try {
-      const { data } = await useFetch('/api/auth/register', {
+      const { data } = await useFetch('http://localhost:3055/v1/api/user/signup', {
         method: 'POST',
-        body: { name, password }
+        body: { name, email, password },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': 'edd46669d67a5eb5691f7634e9faa66242d933c43688be28d1e2dc0eca3e4ab7d76cfc4732603ce28a46e796f648952fc7587e5b6b05169bc97ed9c7607acd43'
+        }
       })
 
       if (data.value) {
         userStore.setUser(data.value.user)
-        successMessage.value = `Bạn đã đăng ký thành công tài khoản "${name}"`
+        successMessage.value = `Bạn đã đăng ký thành công tài khoản "${email}"`
         await router.push('')
       }
     } catch (err) {

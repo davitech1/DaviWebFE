@@ -1,12 +1,13 @@
 <script setup>
 import RegisterForm from '~/components/Auth/RegisterForm.vue'
 import LoginForm from '~/components/Auth/LoginForm.vue'
+import AppHeaderDefault from '~/components/AppHeaderDefault.vue';
 </script>
 
 <template>
   <main>
     <!-- <PageLoader /> -->
-    <AppHeaderAccess />
+    <AppHeaderDefault />
     <div class="main">
       <section class="module bg-dark-30" :style="{backgroundImage: 'url(/images/section-4.jpg)'}">
             <div class="container">

@@ -1,6 +1,7 @@
 <!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <script setup >
-  import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
+import AppHeaderHome from '~/components/AppHeaderHome.vue';
 
 const workItems = ref([
   { left: 0, top: 0 },
@@ -33,7 +34,7 @@ function calculateLayout() {
 <template>
     <main>
       <!-- <PageLoader /> -->
-      <AppHeaderDefault />
+      <AppHeaderHome />
       <section id="home" class="home-section home-full-height bg-dark bg-gradient  fixed-height-section" :style="{backgroundImage:'url(/images/section-10.jpg)'}" >
         <div class="titan-caption">
           <div class="caption-content">
@@ -151,37 +152,37 @@ function calculateLayout() {
             <ul id="works-grid" class="works-grid works-grid-gut works-grid-3 works-hover-w" :style="{ position: 'relative', height: `${gridHeight}px` }">
             
             <li class="work-item illustration webdesign"><a href="portfolio-single-1.html">
-                <div class="work-image"><img src="~/assets/images/work-1.jpg" alt="Portfolio Item"></div>
+                <div class="work-image"><img src="/images/work-1.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Corporate Identity</h3>
                   <div class="work-descr">Illustration</div>
                 </div></a></li>
             <li class="work-item marketing photography"><a href="portfolio-single-1.html">
-                <div class="work-image"><img src="~/assets/images/work-2.jpg" alt="Portfolio Item"></div>
+                <div class="work-image"><img src="/images/work-2.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Bag MockUp</h3>
                   <div class="work-descr">Marketing</div>
                 </div></a></li>
             <li class="work-item illustration photography"><a href="portfolio-single-1.html">
-                <div class="work-image"><img src="~/assets/images/work-3.jpg" alt="Portfolio Item"></div>
+                <div class="work-image"><img src="/images/work-3.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Disk Cover</h3>
                   <div class="work-descr">Illustration</div>
                 </div></a></li>
             <li class="work-item marketing photography"><a href="portfolio-single-1.html">
-                <div class="work-image"><img src="~/assets/images/work-4.jpg" alt="Portfolio Item"></div>
+                <div class="work-image"><img src="/images/work-4.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Business Card</h3>
                   <div class="work-descr">Photography</div>
                 </div></a></li>
             <li class="work-item illustration webdesign"><a href="portfolio-single-1.html">
-                <div class="work-image"><img src="~/assets/images/work-5.jpg" alt="Portfolio Item"></div>
+                <div class="work-image"><img src="/images/work-5.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Business Card</h3>
                   <div class="work-descr">Webdesign</div>
                 </div></a></li>
             <li class="work-item marketing webdesign"><a href="portfolio-single-1.html">
-                <div class="work-image"><img src="~/assets/images/work-6.jpg" alt="Portfolio Item"></div>
+                <div class="work-image"><img src="/images/work-6.jpg" alt="Portfolio Item"></div>
                 <div class="work-caption font-alt">
                   <h3 class="work-title">Business Cards in paper clip</h3>
                   <div class="work-descr">Marketing</div>
@@ -231,7 +232,7 @@ function calculateLayout() {
                 </div>
               </div>
               <div class="col-md-6 col-lg-6 hidden-xs hidden-sm">
-                <div class="alt-services-image align-center"><img src="~/assets/images/promo.png" alt="Feature Image"></div>
+                <div class="alt-services-image align-center"><img src="/images/promo.png" alt="Feature Image"></div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="alt-features-item">
@@ -266,7 +267,7 @@ function calculateLayout() {
             <div class="row">
               <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
                 <div class="team-item">
-                  <div class="team-image"><img src="~/assets/images/team-1.jpg" alt="Member Photo">
+                  <div class="team-image"><img src="/images/team-1.jpg" alt="Member Photo">
                     <div class="team-detail">
                       <h5 class="font-alt">Hi all</h5>
                       <p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
@@ -281,7 +282,7 @@ function calculateLayout() {
               </div>
               <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
                 <div class="team-item">
-                  <div class="team-image"><img src="~/assets/images/team-2.jpg" alt="Member Photo">
+                  <div class="team-image"><img src="/images/team-2.jpg" alt="Member Photo">
                     <div class="team-detail">
                       <h5 class="font-alt">Good day</h5>
                       <p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
@@ -296,7 +297,7 @@ function calculateLayout() {
               </div>
               <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
                 <div class="team-item">
-                  <div class="team-image"><img src="~/assets/images/team-3.jpg" alt="Member Photo">
+                  <div class="team-image"><img src="/images/team-3.jpg" alt="Member Photo">
                     <div class="team-detail">
                       <h5 class="font-alt">Hello</h5>
                       <p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
@@ -311,7 +312,7 @@ function calculateLayout() {
               </div>
               <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-3" onclick="wow fadeInUp">
                 <div class="team-item">
-                  <div class="team-image"><img src="~/assets/images/team-4.jpg" alt="Member Photo">
+                  <div class="team-image"><img src="/images/team-4.jpg" alt="Member Photo">
                     <div class="team-detail">
                       <h5 class="font-alt">Yes, it's me</h5>
                       <p class="font-serif">Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&amp;nbsp;iaculis diam.</p>
@@ -407,9 +408,8 @@ function calculateLayout() {
                 </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3">
-                <div class="price-table font-alt best">
-                  <h4>Advanced</h4>
-                  <p class="small">Best Choice</p>
+                <div class="price-table font-alt">
+                  <h4>Ultimate</h4>
                   <div class="borderline"/>
                   <p class="price"><span>$</span>64
                   </p>
@@ -418,7 +418,7 @@ function calculateLayout() {
                     <li>15 Demos Included</li>
                     <li>Newsletter</li>
                     <li>Working Contact Form</li>
-                    <li><span>Unlimited Domains</span></li>
+                    <li>Unlimited Domains</li>
                   </ul><a class="btn btn-d btn-round" href="#">Sign Up</a>
                 </div>
               </div>
@@ -534,7 +534,7 @@ function calculateLayout() {
             <div class="row multi-columns-row post-columns">
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="post mb-20">
-                  <div class="post-thumbnail"><a href="#"><img src="~/assets/images/post-1.jpg" alt="Blog-post Thumbnail"></a></div>
+                  <div class="post-thumbnail"><a href="#"><img src="/images/post-1.jpg" alt="Blog-post Thumbnail"></a></div>
                   <div class="post-header font-alt">
                     <h2 class="post-title"><a href="#">Our trip to the Alps</a></h2>
                     <div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments
@@ -548,7 +548,7 @@ function calculateLayout() {
               </div>
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="post mb-20">
-                  <div class="post-thumbnail"><a href="#"><img src="~/assets/images/post-2.jpg" alt="Blog-post Thumbnail"></a></div>
+                  <div class="post-thumbnail"><a href="#"><img src="/images/post-2.jpg" alt="Blog-post Thumbnail"></a></div>
                   <div class="post-header font-alt">
                     <h2 class="post-title"><a href="#">Shore after the tide</a></h2>
                     <div class="post-meta">By&nbsp;<a href="#">Andy River</a>&nbsp;| 11 November | 4 Comments
@@ -562,7 +562,7 @@ function calculateLayout() {
               </div>
               <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="post mb-20">
-                  <div class="post-thumbnail"><a href="#"><img src="~/assets/images/post-3.jpg" alt="Blog-post Thumbnail"></a></div>
+                  <div class="post-thumbnail"><a href="#"><img src="/images/post-3.jpg" alt="Blog-post Thumbnail"></a></div>
                   <div class="post-header font-alt">
                     <h2 class="post-title"><a href="#">We in New Zealand</a></h2>
                     <div class="post-meta">By&nbsp;<a href="#">Dylan Woods</a>&nbsp;| 5 November | 15 Comments
@@ -677,14 +677,14 @@ function calculateLayout() {
                   <h5 class="widget-title font-alt">Popular Posts</h5>
                   <ul class="widget-posts">
                     <li class="clearfix">
-                      <div class="widget-posts-image"><a href="#"><img src="~/assets/images/rp-1.jpg" alt="Post Thumbnail"></a></div>
+                      <div class="widget-posts-image"><a href="#"><img src="/images/rp-1.jpg" alt="Post Thumbnail"></a></div>
                       <div class="widget-posts-body">
                         <div class="widget-posts-title"><a href="#">Designer Desk Essentials</a></div>
                         <div class="widget-posts-meta">23 january</div>
                       </div>
                     </li>
                     <li class="clearfix">
-                      <div class="widget-posts-image"><a href="#"><img src="~/assets/images/rp-2.jpg" alt="Post Thumbnail"></a></div>
+                      <div class="widget-posts-image"><a href="#"><img src="/images/rp-2.jpg" alt="Post Thumbnail"></a></div>
                       <div class="widget-posts-body">
                         <div class="widget-posts-title"><a href="#">Realistic Business Card Mockup</a></div>
                         <div class="widget-posts-meta">15 February</div>
